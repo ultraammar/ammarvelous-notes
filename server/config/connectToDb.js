@@ -1,10 +1,5 @@
 
-
-if (process.env.NODE_ENV != "production"){
-    require('dotenv').config();
-}
-
-
+// This file is responsible for connecting to the database.
 // getting-started.js
 const mongoose = require('mongoose');
 
