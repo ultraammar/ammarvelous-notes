@@ -14,13 +14,17 @@ const connectToDb = require('./config/connectToDb');
 const Note = require('./models/note');
 const notesController  = require('./controllers/notesController');
 const usersController = require('./controllers/usersController');
+const requireAuth = require('./middleware/requireAuth');
 
 //creating app
 const app = express();
 
 //configure express app, for e.g to use json or other stuff like cors
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: true,
+    credentials: true
+}));
 app.use(cookieparser());
 
 //connect to db
@@ -30,6 +34,7 @@ connectToDb();
 app.post('/signup', usersController.signup);
 
 app.post('/login', usersController.login);
+app.get('/check-auth', requireAuth, usersController.checkAuth); //middleware example
 
 app.get('/logout', usersController.logout); 
 

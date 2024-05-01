@@ -19,48 +19,65 @@ async function signup(req, res) {
 }
 
 async function login(req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
+    try{
+        const email = req.body.email;
+        const password = req.body.password;
 
-    const user = await User.findOne({email: email});
-    if(!user){
-        res.status(401).json({error: "User does not exist"});
+        //find user
+        const user = await User.findOne({email: email});
+        if(!user){
+            res.status(401).json({error: "User does not exist"});
+        }
+
+        //check password
+        const passwordMatch = bcrypt.compareSync(password, user.password); //true
+        if(!passwordMatch){
+            res.status(401).json({error: "Password is incorrect"});
+        }
+
+        //jwt token creation
+        const exp = Date.now() + 1000 *60 *60*24*30;
+        const token = jwt.sign({ sub: user._id, exp }, process.env.SECRET);
+        
+        //send cookie
+        res.cookie("auth_token", token, {
+            expires: new Date(exp),
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: process.env.NODE_ENV === "production"
+        })
+
+        //send status
+        res.sendStatus(200);
+    }catch(err){
+        res.status(500).json({error: "Server error"});
     }
+    
 
-    const passwordMatch = bcrypt.compareSync(password, user.password); //true
-    if(!passwordMatch){
-        res.status(401).json({error: "Password is incorrect"});
+    
+}
+
+function checkAuth(req, res){
+    try{
+        res.sendStatus(200);
+    }catch(err){
+        res.status(500).json({error: "Server error"});
+    
     }
-
-    //jwt token creation
-    const exp = Date.now() + 1000 *60 *60*24*30;
-    const token = jwt.sign({ sub: user._id, exp }, process.env.SECRET);
-    
-    //send cookie
-    res.cookie("auth_token", token, {
-        expires: new Date(exp),
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === "production"
-    })
-    
-
-    //send it
-    res.sendStatus(200);
 }
 
 async function logout(req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
-    const user = await User.create({
-        email,
-        password,
-    })
-    res.json({ user });
+  try{
+    res.clearCookie("auth_token").sendStatus(200);
+  } catch(err){
+    console.log(err);
+    res.status(500).json({error: "Server error"});
+  }
 }
 
 module.exports = {
     signup,
     login,
     logout,
+    checkAuth
 };
