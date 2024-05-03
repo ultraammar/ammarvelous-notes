@@ -26,13 +26,13 @@ async function login(req, res) {
         //find user
         const user = await User.findOne({email: email});
         if(!user){
-            res.status(401).json({error: "User does not exist"});
+            return res.status(401).json({error: "User does not exist"});
         }
 
         //check password
         const passwordMatch = bcrypt.compareSync(password, user.password); //true
         if(!passwordMatch){
-            res.status(401).json({error: "Password is incorrect"});
+            return res.status(401).json({error: "Password is incorrect"});
         }
 
         //jwt token creation
