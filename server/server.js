@@ -38,15 +38,15 @@ app.get('/check-auth', requireAuth, usersController.checkAuth); //middleware exa
 
 app.get('/logout', usersController.logout); 
 
-app.get('/notes', notesController.fetchNotes);
+app.get('/notes', requireAuth, notesController.fetchNotes);
 
-app.get('/notes/:id',notesController.fetchNote )
+app.get('/notes/:id', requireAuth,notesController.fetchNote )
 
-app.post('/notes', notesController.createNote);
+app.post('/notes', requireAuth, notesController.createNote);
 
-app.put('/notes/:id', notesController.updateNote);
+app.put('/notes/:id', requireAuth, notesController.updateNote);
 
-app.delete('/notes/:id', notesController.deleteNote)
+app.delete('/notes/:id',  requireAuth,notesController.deleteNote)
 
 //start the server
 app.listen(process.env.PORT, () => {

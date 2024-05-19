@@ -6,7 +6,7 @@ const CreateNotes = ({onNoteCreated}) => {
     //states
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
-    const [error, setError] = useState("");
+    const [error, setError] = useState(null);
     
     //functions
     const handleOnSubmit = async (e) => {
