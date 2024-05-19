@@ -24,6 +24,7 @@ const EditNote = () => {
 
                 } catch (error) {
                     console.error("Error fetching notes: ", error);
+                    console.log("Error fetching notes: ", error);
                 }
             };
 
@@ -31,7 +32,7 @@ const EditNote = () => {
         e.preventDefault();
         //update note
         
-        axios.put(`/notes/${id}`, {title, body})
+        axios.put(`/notes/${id}`, {title, body}, {withCredentials: true})
         .then(() => {
                 //redirect
                 window.location.href = "/";
