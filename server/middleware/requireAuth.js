@@ -3,7 +3,7 @@ const User = require('../models/user');
 
 async function requireAuth(req, res, next){
     try{
-
+        
         //read token off cookies
         const token = req.cookies.auth_token;
 
@@ -17,7 +17,7 @@ async function requireAuth(req, res, next){
 
         //find user using decoded token
         const user = await User.findById(decoded.sub);
-        if(!user) return res.status(401);
+        if(!user) return res.status(401).json({error: "User not found."});
         
 
         //attach user to req object
@@ -26,7 +26,7 @@ async function requireAuth(req, res, next){
         //continue on
         next();
     }catch(err){
-        res.status(401).json({error: "Unauthorized"});
+        res.status(405).json({error: "Unauthorized"});
     }
 }
 

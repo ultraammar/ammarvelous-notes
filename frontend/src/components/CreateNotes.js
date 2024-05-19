@@ -12,7 +12,7 @@ const CreateNotes = ({onNoteCreated}) => {
     const handleOnSubmit = async (e) => {
         e.preventDefault();
         //create note
-        const res = await axios.post("/notes", {title, body});
+        const res = await axios.post("/notes", {title, body}, {withCredentials: true});
         //console.log(res);
         if(res.data.error){
             setError(res.data.error);
@@ -22,7 +22,7 @@ const CreateNotes = ({onNoteCreated}) => {
             onNoteCreated();
     }
     return (
-        <div>
+        <div style={{ marginBottom: '50px' }}>
             <h2>Create note</h2>
             <form onSubmit={handleOnSubmit}>
                 <table>
@@ -39,7 +39,7 @@ const CreateNotes = ({onNoteCreated}) => {
                             </td>
                         </tr>
                         <tr>
-                            <td>Body:</td>
+                            <td>Description:</td>
                             <td>
                                 <textarea
                                     onChange={(e) => setBody(e.target.value)}

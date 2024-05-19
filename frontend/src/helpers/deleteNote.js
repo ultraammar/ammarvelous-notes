@@ -4,7 +4,7 @@ import axios from 'axios';
 export const deleteNote = async (id, setRefresh) => {
   try {
     // Delete note
-    await axios.delete(`http://localhost:3001/notes/${id}`);
+    await axios.delete(`/notes/${id}`, {withCredentials: true});
 
     // Fetch notes
     setRefresh(prevRefresh => !prevRefresh);

@@ -15,7 +15,7 @@ const EditNote = () => {
         const fetchNote = async () => {
                 try {
                     // Fetch note
-                    const res = await axios.get(`/notes/${id}`);
+                    const res = await axios.get(`/notes/${id}`, {withCredentials: true});
             
                     // Set to state
                     setNote(res.data.note);
