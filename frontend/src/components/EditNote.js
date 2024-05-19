@@ -15,7 +15,7 @@ const EditNote = () => {
         const fetchNote = async () => {
                 try {
                     // Fetch note
-                    const res = await axios.get(`http://localhost:3001/notes/${id}`);
+                    const res = await axios.get(`/notes/${id}`);
             
                     // Set to state
                     setNote(res.data.note);
@@ -31,7 +31,7 @@ const EditNote = () => {
         e.preventDefault();
         //update note
         
-        axios.put(`http://localhost:3001/notes/${id}`, {title, body})
+        axios.put(`/notes/${id}`, {title, body})
         .then(() => {
                 //redirect
                 window.location.href = "/";

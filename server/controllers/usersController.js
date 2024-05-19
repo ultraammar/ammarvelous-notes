@@ -32,7 +32,7 @@ async function login(req, res) {
         //check password
         const passwordMatch = bcrypt.compareSync(password, user.password); //true
         if(!passwordMatch){
-            return res.status(401).json({error: "Password is incorrect"});
+            return res.status(402).json({error: "Password is incorrect"});
         }
 
         //jwt token creation

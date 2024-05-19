@@ -12,7 +12,7 @@ const CreateNotes = ({onNoteCreated}) => {
     const handleOnSubmit = async (e) => {
         e.preventDefault();
         //create note
-        const res = await axios.post("http://localhost:3001/notes", {title, body});
+        const res = await axios.post("/notes", {title, body});
         //console.log(res);
         if(res.data.error){
             setError(res.data.error);

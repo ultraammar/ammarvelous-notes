@@ -13,7 +13,7 @@ const ListNotes = () => {
     const fetchNotes = async() => {
         try {
           // Fetch notes
-          const res = await axios.get("http://localhost:3001/notes");
+          const res = await axios.get("/notes");
           setNotes(res.data.notes);
 
           
