@@ -5,23 +5,22 @@ import axios from 'axios';
 import CreateNotes from './CreateNotes';
 
 const ListNotes = () => {
-    //useStates
-    const [notes, setNotes] = useState([]);
-    const [refresh, setRefresh] = useState(false);
+  // create variable
+  const [notes, setNotes] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
     //functions
-    const fetchNotes = async () => {
+    const fetchNotes = async() => {
         try {
           // Fetch notes
           const res = await axios.get("http://localhost:3001/notes");
-      
-          // Set to state
           setNotes(res.data.notes);
-        } catch (error) {
-          console.error("Error fetching notes: ", error);
-        }
-      };
-      
+
+          
+      }
+      catch(err)
+      {console.log(err)};
+    }
     
         //useEffect
     useEffect(() => {

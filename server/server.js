@@ -52,3 +52,4 @@ app.delete('/notes/:id', notesController.deleteNote)
 app.listen(process.env.PORT, () => {
     console.log('Server is running on port 3001');
 });
+
