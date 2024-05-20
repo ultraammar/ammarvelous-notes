@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://ammarvelous-notes-backend.vercel.app';
+axios.defaults.baseURL = 'https://ammarvelous-notes-backend.vercel.app:3001';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
