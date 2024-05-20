@@ -22,7 +22,7 @@ const app = express();
 //configure express app, for e.g to use json or other stuff like cors
 app.use(express.json());
 app.use(cors({
-    origin: true,
+    origin: process.env.NODE_ENV === 'production' ? 'https://ammarvelous-notes.vercel.app' : true,
     credentials: true
 }));
 app.use(cookieparser());
