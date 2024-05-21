@@ -23,7 +23,7 @@ const LoginForm = () => {
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text text-2xl">Email</span>
-                <span className="label-text-alt">input your email address</span>
+                <span className="label-text-alt text-[11px] lg:text-lg">input your email address</span>
               </div>
               <input
                 onChange={store.updateLoginForm}
@@ -37,7 +37,7 @@ const LoginForm = () => {
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text text-2xl">Password</span>
-                <span className="label-text-alt">Input your password</span>
+                <span className="label-text-alt text-[11px] lg:text-lg">Input your password</span>
               </div>
               <input
                 onChange={store.updateLoginForm}
