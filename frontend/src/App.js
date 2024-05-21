@@ -6,29 +6,18 @@ import LoginPage from 'pages/LoginPage';
 import RequireAuth from 'components/RequireAuth';
 import SignupPage from 'pages/SignupPage';
 import LogoutPage from 'pages/LogoutPage';
+import { NavBar } from 'components/NavBar';
 
 function App() {
   
   
   return (
-    <div className="App">
+    <div className="App min-h-screen bg-cover bg-no-repeat bg-fixed" style={{ backgroundImage: `url('./media/glow-bottom.svg')`}}>
       <BrowserRouter>
-      <ul>
-        <li>
-          <Link to="/notes">Notes</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/signup">Signup</Link>
-        </li>
-        <li>
-          <Link to="/logout">Logout</Link>
-        </li>
-      </ul>
+      <NavBar/>
+      
+      <div className="p-10" >
         <Routes>
-          
           <Route path="/" element={<Navigate to="/notes" replace />} />
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/signup' element={<SignupPage/>}/>
@@ -36,6 +25,7 @@ function App() {
           <Route path="/notes/" element={<RequireAuth><ListNotes/></RequireAuth>}/>
           <Route path='/notes/:id/edit' element={<EditNote/>}/>
         </Routes>
+      </div>
       </BrowserRouter>
       
       

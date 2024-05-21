@@ -29,19 +29,40 @@ const ListNotes = () => {
 
   return (
     <div>
-        <CreateNotes onNoteCreated={()=>setRefresh(!refresh)}/>
+        <div className="grid grid-cols-4 grid-rows-1 gap-6 p-20" >
+            <div className='col-span-1'>
+              <CreateNotes onNoteCreated={()=>setRefresh(!refresh)}/>
+            </div>
+            
+
+            <div className="card glass glass-effect-cards col-span-3">
+              <div className="card-body">
+                <h2 className="card-title">List of Notes</h2>
+
+                {notes && notes.map(note => {
+                return (
+                  <div key={note._id} className="card w-full bg-neutral text-neutral-content opacity-80">
+                    <div className="card-body justify-between flex-row">
+                      <div className="content max-w-3xl items-start">
+                        <h2 className="card-title ">{note.title}</h2>
+                        <p className='mt-2'>{note.body}</p>
+                      </div>
+                      <div className="card-actions items-end mt-auto pt-4">
+                        <Link className="btn btn-primary w-full max-w-sm" to={`/notes/${note._id}/edit`}>Edit</Link>
+                        <button onClick={() => deleteNote(note._id, setRefresh)} className="btn btn-ghost w-full max-w-sm">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                )
+                })}
+              
+              </div>
+            </div>
+            
+        </div>
+            
         
 
-        <h2>List of Notes</h2>
-
-        {notes && notes.map(note => {
-        return <div key={note._id}>
-            <h3>{note.title}</h3>
-            <p>{note.body}</p>
-            <button onClick={() => deleteNote(note._id, setRefresh)}>Delete</button>
-            <Link to={`/notes/${note._id}/edit`}>Edit</Link>
-        </div>
-        })}
 
         
 
