@@ -29,20 +29,20 @@ const CreateNotes = ({onNoteCreated}) => {
                 <h2 className="card-title">Create note</h2>
                 
                 <form onSubmit={handleOnSubmit}>
-                    <label className="form-control w-full max-w-xs">
+                    <label className="form-control w-full ">
                         <div className="label">
                             <span className="label-text">Title</span>
-                            <span className="label-text-alt">give your note a name</span>
+                            <span className="label-text-alt">Give your note a name</span>
                         </div>
                         <input
                             onChange={(e) => setTitle(e.target.value)}
                             value={title}
                             name="title"
                             type="text"
-                            className="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full "
                         />
                     </label>
-                    <label className="form-control w-full max-w-xs">
+                    <label className="form-control w-full ">
                         <div className="label">
                             <span className="label-text">Description</span>
                             <span className="label-text-alt">What's it about?</span>
@@ -51,11 +51,11 @@ const CreateNotes = ({onNoteCreated}) => {
                             onChange={(e) => setBody(e.target.value)}
                             name="body"
                             value={body}
-                            className="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full "
                         />
                     </label>
                     <div className="card-actions mt-20">
-                        <button type='submit' className="btn w-full max-w-xs btn-primary">Make</button>
+                        <button type='submit' className="btn w-full btn-primary">Make</button>
                     </div>
                 
                 </form>

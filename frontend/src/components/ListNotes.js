@@ -29,8 +29,8 @@ const ListNotes = () => {
 
   return (
     <div>
-        <div className="grid grid-cols-4 grid-rows-1 gap-6 p-20" >
-            <div className='col-span-1'>
+        <div className="grid grid-cols-1 lg:grid-cols-4 grid-rows-1 gap-6 py-20 lg:p-20" >
+            <div className='col-span-3 lg:col-span-1'>
               <CreateNotes onNoteCreated={()=>setRefresh(!refresh)}/>
             </div>
             
@@ -43,11 +43,11 @@ const ListNotes = () => {
                 return (
                   <div key={note._id} className="card w-full bg-neutral text-neutral-content opacity-80">
                     <div className="card-body justify-between flex-row">
-                      <div className="content max-w-3xl items-start">
+                      <div className="content max-w-[200px] lg:max-w-3xl items-start">
                         <h2 className="card-title ">{note.title}</h2>
                         <p className='mt-2'>{note.body}</p>
                       </div>
-                      <div className="card-actions items-end mt-auto pt-4">
+                      <div className="card-actions content-start  pt-4">
                         <Link className="btn btn-primary w-full max-w-sm" to={`/notes/${note._id}/edit`}>Edit</Link>
                         <button onClick={() => deleteNote(note._id, setRefresh)} className="btn btn-ghost w-full max-w-sm">Delete</button>
                       </div>

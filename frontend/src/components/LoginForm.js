@@ -14,7 +14,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="p-20 w-[550px] hover:w-2/5 ease-in-out duration-500">
+    <div className="py-20 lg:p-20 lg:w-[550px] lg:hover:w-2/5 ease-in-out duration-500">
       <div className="card  glass glass-effect-cards ">
         <div className="card-body flex justify-center ">
           <h2 className="card-title justify-center text-4xl">Login</h2>
