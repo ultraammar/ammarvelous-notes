@@ -3,9 +3,7 @@ import React from 'react'
 
 export default function LoginPage() {
   return (
-    <div>
-      <div>LoginPage</div>
-
+    <div className='flex justify-center'>
       <LoginForm/>
     </div>
   )

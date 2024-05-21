@@ -3,8 +3,7 @@ import React from 'react'
 
 function SignupPage() {
   return (
-    <div>
-        <h1>SignupPage</h1>
+    <div className='flex justify-center'>
         <SignupForm/>
     </div>
   )
