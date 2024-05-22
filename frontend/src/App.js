@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
       <NavBar/>
       
-      <div className="p-10" >
+      <div className=" p-4 lg:p-10" >
         <Routes>
           <Route path="/" element={<Navigate to="/notes" replace />} />
           <Route path='/login' element={<LoginPage/>}/>
